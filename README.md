@@ -12,8 +12,8 @@
     - In Controller class, it is not ideal to build logic on it, logic should be
       implemented in Service class.
     - Service class should have @Service annotation.
-    - To use UserService class methods in Cotroller class, need to @Autowired
-      the UserService.
+    - To use UserService methods in Cotroller class, need to @Autowired
+      the UserService class.
 
 ```
 
