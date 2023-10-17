@@ -1,55 +1,48 @@
 package com.beta.turf_booking.Controller;
 
 import com.beta.turf_booking.Model.User;
+import com.beta.turf_booking.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private final List<User> users = new ArrayList<>();
-    private Long autoIncrementId = 1L;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping
-    public List<User> findUser() {
-        return users;
+    public List<User> showUser() {
+        return userService.showAllUser();
     }
 
     @PostMapping
     public String createUser(@RequestBody User user) {
-        user.setId(autoIncrementId++);
-        users.add(user);
+        userService.createNewUser(user);
         return "New user has been added !";
     }
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        for (User user: users){
-            if(user.getId() == id) {
-                return user;
-            }
-        }
-        return null;
+    public User findUser(@PathVariable Long id) {
+       return userService.findUserById(id);
     }
 
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable Long id) {
-        Iterator<User> userObj = users.iterator();
-        while (userObj.hasNext()) {
-            User user = userObj.next();
-            if(user.getId() == id) {
-                userObj.remove();
-            }
+        boolean deleted = userService.deleteUserById(id);
+        if(deleted) {
+            return "user has been deleted";
+        } else {
+            return "User not available";
         }
-        return "user has been deleted";
     }
 
     @PutMapping("/{id}")
     public String updateUser(@PathVariable Long id, @RequestBody User updateUser) {
-        for(User user: users) {
+        for(User user: userService.updateUserById()) {
             if(user.getId() == id) {
                 user.setName(updateUser.getName());
                 user.setPhone(updateUser.getPhone());
