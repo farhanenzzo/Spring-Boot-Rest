@@ -1,7 +1,7 @@
 
 
 ```bash
-  Java Spring Boot REST api CRUD with -> Spring Data JPA -> MySQL
+  # Java Spring Boot REST api CRUD with -> Spring Data JPA -> MySQL
 
   - Controller
     * UserController
@@ -14,6 +14,7 @@
 
   Key notes:
   # Why default constructor in Entity class ?
+    https://www.baeldung.com/jpa-no-argument-constructor-entity-class
 
   # Hibernate ?
 
