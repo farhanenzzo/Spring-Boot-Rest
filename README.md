@@ -13,6 +13,7 @@
     * UserRepo
 
   Key notes:
+  # Why default constructor in Entity class ?
 
   # Hibernate ?
 
