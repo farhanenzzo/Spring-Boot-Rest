@@ -34,7 +34,7 @@ public class UserController {
     public String deleteUser(@PathVariable Long id) {
         boolean deleted = userService.deleteUserById(id);
         if(deleted) {
-            return "user has been deleted";
+            return "User has been deleted";
         } else {
             return "User not available";
         }
@@ -42,14 +42,11 @@ public class UserController {
 
     @PutMapping("/{id}")
     public String updateUser(@PathVariable Long id, @RequestBody User updateUser) {
-        for(User user: userService.updateUserById()) {
-            if(user.getId() == id) {
-                user.setName(updateUser.getName());
-                user.setPhone(updateUser.getPhone());
-                user.setCity(updateUser.getCity());
-                user.setArea(updateUser.getArea());
-            }
+        boolean updated = userService.updateUserById(id, updateUser);
+        if(updated) {
+            return "User has been updated";
+        } else {
+            return "User not available";
         }
-        return "User has been updated !";
     }
 }

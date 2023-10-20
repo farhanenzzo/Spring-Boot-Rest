@@ -1,11 +1,22 @@
 package com.beta.turf_booking.Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "customer")
 public class User {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String phone;
     private String city;
     private String area;
+
+    public User() {
+    }
 
     public User(long id, String name, String phone, String city, String area) {
         this.id = id;

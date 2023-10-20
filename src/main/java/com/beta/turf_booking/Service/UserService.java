@@ -1,49 +1,55 @@
 package com.beta.turf_booking.Service;
 
 import com.beta.turf_booking.Model.User;
+import com.beta.turf_booking.Repository.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
-    private final List<User> users = new ArrayList<>();
-    private Long autoIncrementId = 1L;
+    @Autowired
+    private UserRepo userRepo;
 
     public List<User> showAllUser() {
-        return users;
+        return userRepo.findAll();
     }
 
     public void createNewUser(User user) {
-        user.setId(autoIncrementId++);
-        users.add(user);
+        userRepo.save(user);
     }
 
     public User findUserById(long id) {
-        for (User user: users){
-            if(user.getId() == id) {
-                return user;
-            }
-        }
-        return null;
+        return userRepo.findById(id).orElse(null);
     }
 
-    public List<User> updateUserById() {
-        return users;
+    public boolean updateUserById(long id, User updateUser) {
+        Optional<User> userOptional = userRepo.findById(id);
+
+        if(userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setName(updateUser.getName());
+            user.setPhone(updateUser.getPhone());
+            user.setCity(updateUser.getCity());
+            user.setArea(updateUser.getArea());
+            userRepo.save(user);
+
+            return true;
+        }
+        return false;
     }
 
     public boolean deleteUserById(long id) {
-        Iterator<User> userObj = users.iterator();
-        while (userObj.hasNext()) {
-            User user = userObj.next();
-            if(user.getId() == id) {
-                userObj.remove();
-                return true;
-            }
+        try {
+            userRepo.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        return false;
     }
 }
