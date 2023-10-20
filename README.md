@@ -1,7 +1,7 @@
 
 
 ```bash
-  Java Spring Boot REST api CRUD with -> MySQL
+  Java Spring Boot REST api CRUD with -> Spring Data JPA -> MySQL
 
   - Controller
     * UserController
@@ -23,8 +23,8 @@
     - it is an abstraction on top of JPA and hibernate.
     - it reduces the boilerplate code 
     - it gives us lots of generated queries
-    -  we can access our databases without having to write any SQl through
-       Repositories
+    - we can access our databases without having to write any SQl through
+      Repositories
 
 
   # application.properties :
