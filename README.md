@@ -1,4 +1,5 @@
-
+> [!IMPORTANT]
+>  [baeldung](https://www.baeldung.com/jpa-no-argument-constructor-entity-class)
 
 ```bash
   # Java Spring Boot REST api CRUD with -> Spring Data JPA -> MySQL
