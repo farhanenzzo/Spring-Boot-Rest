@@ -14,7 +14,7 @@
 
   Key notes:
   # Why default constructor in Entity class ?
-    https://www.baeldung.com/jpa-no-argument-constructor-entity-class
+    [baeldung](https://www.baeldung.com/jpa-no-argument-constructor-entity-class)
 
   # Hibernate ?
 
