@@ -1,12 +1,10 @@
 package com.beta.turf_booking.Service;
 
-import com.beta.turf_booking.Model.User;
+import com.beta.turf_booking.Domain.User;
 import com.beta.turf_booking.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 

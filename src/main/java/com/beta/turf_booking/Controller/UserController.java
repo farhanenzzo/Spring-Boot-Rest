@@ -1,6 +1,6 @@
 package com.beta.turf_booking.Controller;
 
-import com.beta.turf_booking.Model.User;
+import com.beta.turf_booking.Domain.User;
 import com.beta.turf_booking.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

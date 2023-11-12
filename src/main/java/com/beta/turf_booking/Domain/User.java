@@ -1,4 +1,4 @@
-package com.beta.turf_booking.Model;
+package com.beta.turf_booking.Domain;
 
 import javax.persistence.*;
 
